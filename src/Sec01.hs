@@ -3,7 +3,6 @@ module Sec01 where
 import qualified Data.Array as A
 import qualified Data.Array.ST as AST
 import System.Random.Shuffle (shuffleM)
-import Control.Applicative
 
 
 filterList :: Eq a => [a] -> [a] -> [a]
@@ -34,6 +33,10 @@ checkList xs = AST.runSTArray (do {
                   return a })
                where n = length xs
 
+-- |
+-- >>> import Control.Applicative
+-- >>> minfree2 <$> shuffleM ([0 .. 4] ++ [6 .. 1000] :: [Int])
+-- 5
 minfree2 :: [Int] -> Int
 minfree2 = search . checkList
 
