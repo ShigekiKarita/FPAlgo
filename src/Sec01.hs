@@ -1,5 +1,10 @@
+module Sec01 where
+
 import qualified Data.Array as A
 import qualified Data.Array.ST as AST
+import System.Random.Shuffle (shuffleM)
+import Control.Applicative
+
 
 filterList :: Eq a => [a] -> [a] -> [a]
 filterList us vs = filter (`notElem` vs) us
@@ -12,25 +17,31 @@ minfree0 xs = head (filterList [0 ..] xs)
 search :: A.Array Int Bool -> Int
 search = length . takeWhile id . A.elems
 
--- 0 .. 
+minfree1 :: [Int] -> Int
+minfree1 = search . checkList0
+
+
+-- 0 ..
 checkList0 :: [Int] -> A.Array Int Bool
 checkList0 xs = A.accumArray (||) False (0, n)
                (zip (filter (<= n) xs) (repeat True))
                where n = length xs
 
-countList :: [Int] -> A.Array Int Int
-countList xs = A.accumArray (+) 0 (0, n) (zip xs (repeat 1))
-               where n = maximum xs
-
 checkList :: [Int] -> A.Array Int Bool
 checkList xs = AST.runSTArray (do {
                   a <- AST.newArray (0, n) False;
-                  sequence [AST.writeArray a x True | x <- xs, x <= n];
-                  return a })                
+                  sequence_ [AST.writeArray a x True | x <- xs, x <= n];
+                  return a })
                where n = length xs
-              
-                     
-minfree :: [Int] -> Int
-minfree = search . checkList
 
-main = putStrLn "OK"
+minfree2 :: [Int] -> Int
+minfree2 = search . checkList
+
+main :: IO ()
+main = do {
+  sl <- shuffleM ([0 .. 4] ++ [6 .. 1000] :: [Int]);
+  print $ minfree0 sl;
+  print $ minfree1 sl;
+  print $ minfree2 sl;
+  return ()
+}
