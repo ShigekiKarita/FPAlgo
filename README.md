@@ -1,5 +1,7 @@
 # Haskell のメモ
 
+[![Build Status](https://travis-ci.org/ShigekiKarita/FPAlgo.svg?branch=master)](https://travis-ci.org/ShigekiKarita/FPAlgo)
+
 ## Tips
 + test は HSpec と doctest を使うと良い。
 + doctest は ghci みたいな IO っぽいので大体の副作用を使える
