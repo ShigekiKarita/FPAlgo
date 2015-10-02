@@ -19,11 +19,11 @@ executable Fpalgo
   main-is:             Sec01.hs
   -- other-modules:
   -- other-extensions:
-  build-depends:       base >=4.7 && <4.8,
-                       array,
-                       random-shuffle
-  hs-source-dirs:      src
-  default-language:    Haskell2010
+  build-depends:        base
+                      , array
+                      , random-shuffle
+  hs-source-dirs:       src
+  default-language:     Haskell2010
 
 
 Library
@@ -31,7 +31,7 @@ Library
   GHC-Options:          -Wall
   Exposed-Modules:      Sec01
   hs-source-dirs:       src
-  Build-Depends:        base >= 4 && < 5
+  Build-Depends:        base
                       , array
                       , random-shuffle
 
@@ -41,8 +41,8 @@ Test-Suite doctest
   HS-Source-Dirs:       test
   Ghc-Options:          -threaded -Wall
   Main-Is:              doctests.hs
-  Build-Depends:        base,
-                        doctest
+  Build-Depends:        base
+                      , doctest
 
 Test-Suite spec
   Type:                 exitcode-stdio-1.0
