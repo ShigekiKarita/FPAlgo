@@ -7,5 +7,6 @@ script:
   - cabal build && cabal test
 
 after_script:
+  - cabal sandbox init
   - cabal install hpc-coveralls
-  - hpc-coveralls spec doctest
+  - .cabal-sandbox/bin/hpc-coveralls spec doctest
