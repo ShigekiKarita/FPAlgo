@@ -1,5 +1,7 @@
 module Sec22 where
 
+import Data.Foldable (Foldable)
+
 --- 余因子行列を再帰的に計算する方法 O(n!)
 -- |
 -- >>> det0 [[1, 2], [3, 4]] == 1 * 4 - 2 * 3
