@@ -44,14 +44,14 @@ Test-Suite doctest
   Build-Depends:        base
                       , doctest
 
-Test-Suite spec
-  Type:                 exitcode-stdio-1.0
-  Default-Language:     Haskell2010
-  Hs-Source-Dirs:       test
-  Ghc-Options:          -Wall
-  Main-Is:              Spec.hs
-  Other-Modules:        Sec01Spec
-  Build-Depends:        base
-                      , hspec
-                      , QuickCheck
-                      , Fpalgo
+-- Test-Suite spec
+--   Type:                 exitcode-stdio-1.0
+--   Default-Language:     Haskell2010
+--   Hs-Source-Dirs:       test
+--   Ghc-Options:          -Wall
+--   Main-Is:              Spec.hs
+--   Other-Modules:        Sec01Spec
+--   Build-Depends:        base
+--                       , hspec
+--                       , QuickCheck
+--                       , Fpalgo
