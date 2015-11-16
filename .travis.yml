@@ -15,6 +15,10 @@ matrix:
     - env: CABALVER=head GHCVER=head
 
 
+before_install:
+  - export PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:$PATH
+
+
 script:
   - cabal configure --enable-tests --enable-library-coverage
   - cabal build && cabal test
