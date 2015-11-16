@@ -1,6 +1,6 @@
 module Sec22 where
 
-import Data.Foldable (Foldable)
+import qualified Data.Foldable as F
 
 --- 余因子行列を再帰的に計算する方法 O(n!)
 -- |
@@ -19,7 +19,7 @@ minors :: [t] -> [[t]]
 minors [] = []
 minors (x:xs) = xs : map (x:) (minors xs)
 
-sgn :: (Num a1, Foldable t) => a1 -> t a -> a1
+sgn :: (Num a1, F.Foldable t) => a1 -> t a -> a1
 sgn x xss = if even (length xss) then x else -x
 
 --- 有理数除算の使用
